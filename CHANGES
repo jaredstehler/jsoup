@@ -1,11 +1,27 @@
 jsoup changelog
 
-*** Release 1.8.2 [PENDING]
+*** Release 1.8.3 [PENDING]
+ * Fix an issue in Element.getElementSiblingIndex (and related methods) where sibling elements with the same content
+   would incorrectly have the same sibling index.
+   <https://github.com/jhy/jsoup/issues/554>
+
+*** Release 1.8.2 [2015-Apr-13]
  * Performance improvements for parsing HTML on Android, of 1.5x to 1.9x, with larger parses getting a bigger
    speed increase. For non-Android JREs, around 1.1x to 1.2x.
 
+ * Dramatic performance improvement in HTML serialization on Android (KitKat and later), of 115x. Improvement by working
+   around a character set encoding speed regression in Android.
+   <https://github.com/jhy/jsoup/issues/383>
+
+ * Performance improvement for the class name selector on Android (.class) of 2.5x to 14x. Around 1.2x
+   on non-Android JREs.
+
  * File upload support. Added the ability to specify input streams for POST data, which will upload content in
    MIME multipart/form-data encoding.
+
+ * Add a meta-charset element to documents when setting the character set, so that the document's charset is
+   unambiguous.
+   <https://github.com/jhy/jsoup/pull/486>
 
  * Added ability to disable TLS (SSL) certificate validation. Helpful if you're hitting a host with a bad cert,
    or your JDK doesn't support SNI.
